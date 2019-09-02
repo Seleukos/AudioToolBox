@@ -258,7 +258,7 @@ class Widget_New_Audio_Measurement(QWidget):
         print("Test...hat funktioniert!")
         test = sd.query_devices()
         print(test)
-        self.dialog = Dialog_Add_Audio_Output_Device(self)
+        self.dialog = Dialog_Add_Audio_Output_Device()
         #self.dialog.show()
         return 0
 
