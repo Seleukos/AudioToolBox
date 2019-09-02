@@ -73,6 +73,10 @@ class AudioMeasurement:
 
         sd.wait()
 
+        for i in [3,4,3,4]:
+            sd.play(data, fs, device=i)
+            sd.wait()
+
         #sd.rec(frames=None, samplerate=fs, channels=None)
 
 
