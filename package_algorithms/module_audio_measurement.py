@@ -67,29 +67,31 @@ class AudioMeasurement:
         #sd.play(data='',samplerate=None,mapping=[0,1,2,3,4], blocking=False, loop=False, kwaargs**)
         #sd.play(data='C:\\Users\\Tobi_SurfacePro\\PycharmProjects\\AudioToolBox\\directory_audio_file\\Jungle Windows Start.wav', samplerate=None, mapping=[8], blocking=False, loop=False)
 
-        #playback_audiofile_from_usbdevice('C:\\Users\\Tobi_SurfacePro\\PycharmProjects\\AudioToolBox\\directory_audio_file\\Jungle Windows Start.wav')
-
-        #und Aufnahme (zeitgleich ud synchronisiert)
         data, fs = sf.read(self.filepath_audiofile)
 
-        sd.play(data, fs)
+        sd.play(data, fs, device=self.id_output_device)
 
         sd.wait()
 
-        # Speichern der Aufnahmen in Messungsinstanz oder in definierten Ordner
+        #sd.rec(frames=None, samplerate=fs, channels=None)
+
+
         print("Playrec")
-        print("data")
+
         print(data)
-        print("data")
-        sd.default.samplerate = fs
+
+        sd.default.samplerate = 48000
         sd.default.channels = 2
         myrecording = sd.playrec(data)
 
-        #sf.write('Name', myrecording, fs)
-        sf.write('output11111.wav', myrecording, fs)
+        #sf.write('output11111.wav', myrecording, fs)
+        sf.write(self.filepath_recordfile, myrecording, fs)
 
 
-        data_record, fs = sf.read('output11111.wav')
+
+        # Speichern der Aufnahmen in Messungsinstanz oder in definierten Ordner
+        data_record, fs = sf.read(self.filepath_recordfile)
+
         sd.play(data_record, fs)
         sd.wait()
 

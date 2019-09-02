@@ -14,13 +14,17 @@ from package_algorithms.module_sounddevice import *
 
 
 class Dialog_Add_Audio_Output_Device(QDialog):
-    def __init__(self, test):
+    def __init__(self):
 
         super().__init__()
 
-        self.initui(test)
+        self.initui()
 
-    def initui(self, test):
+    def initui(self):
+        self.setWindowTitle('Dialog')
+        self.setGeometry(200, 200, 200, 200)
+        print("DIALOG22222222!!!!")
+
 
         gridlayout = QGridLayout(self)
 
@@ -29,21 +33,25 @@ class Dialog_Add_Audio_Output_Device(QDialog):
 
         combobox = QComboBox(self)
 
-        for item in sd.query_devices():
-            combobox.addItem(item)
+        #for item in sd.query_devices():
+            #combobox.addItem(item)
 
         #combobox.currentIndexChanged.connect()
-
+        '''
         gridlayout.addWidget(QLabel("Selected Audio Device:"), 0, 0, 1, 1)
         gridlayout.addWidget(combobox, 0, 1, 1, 1)
-        gridlayout.addWidget(QLabel(""), 2, 1, 1, 1)
+        gridlayout.addWidget(QLabel("name_measurement"), 2, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 3, 1, 1, 1)
-        gridlayout.addWidget(QLabel(""), 4, 1, 1, 1)
+        gridlayout.addWidget(QLabel("filepath_audiofile"), 4, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 5, 1, 1, 1)
-        gridlayout.addWidget(QLabel(""), 6, 1, 1, 1)
+        gridlayout.addWidget(QLabel("id_output_device,"), 6, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 7, 1, 1, 1)
-        gridlayout.addWidget(QLabel(""), 8, 1, 1, 1)
+        gridlayout.addWidget(QLabel("id_input_device,"), 8, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 9, 1, 1, 1)
+        gridlayout.addWidget(QLabel("filepath_recordfile"), 9, 1, 1, 1)
+        gridlayout.addWidget(QLabel("filepath_recordfile"), 10, 1, 1, 1)
+
+        '''
 
         self.show()
 
@@ -66,6 +74,37 @@ class Dialog_Add_Audio_Measurement(QDialog):
         self.initui()
 
     def initui(self):
-        pass
+        self.setWindowTitle('Dialog')
+        self.setWindowModality(Qt.ApplicationModal)
+        print("DIALOG1111111!!!!")
+        #self.setGeometry(200, 200, 200, 200)
+
+        gridlayout = QGridLayout(self)
+
+        combobox = QComboBox(self)
+
+        #for item in sd.query_devices():
+            #combobox.addItem(item)
+
+        #combobox.currentIndexChanged.connect()
+
+        gridlayout.addWidget(QLabel("Selected Audio Device:"), 0, 0, 1, 1)
+        gridlayout.addWidget(combobox, 0, 1, 1, 1)
+        gridlayout.addWidget(QLineEdit("Textblock"), 1, 1, 1, 2)
+        gridlayout.addWidget(QLabel("name_measurement"), 2, 0, 1, 1)
+        gridlayout.addWidget(QLineEdit(""), 2, 1, 1, 1)
+        gridlayout.addWidget(QLabel("filepath_audiofile"), 4, 0, 1, 1)
+        gridlayout.addWidget(QLineEdit(""), 4, 1, 1, 1)
+        gridlayout.addWidget(QLabel("id_output_device,"), 6, 0, 1, 1)
+        gridlayout.addWidget(QLineEdit(""), 6, 1, 1, 1)
+        gridlayout.addWidget(QLabel("id_input_device,"), 7, 0, 1, 1)
+        gridlayout.addWidget(QLineEdit(""), 7, 1, 1, 1)
+        gridlayout.addWidget(QLabel("filepath_recordfile"), 9, 0, 1, 1)
+        gridlayout.addWidget(QLineEdit(""), 9, 1, 1, 1)
+        gridlayout.addWidget(QLabel(""), 10, 0, 1, 1)
+        gridlayout.addWidget(QPushButton("Ok"), 10, 1, 1, 1)
+
+        self.show()
+
 
 

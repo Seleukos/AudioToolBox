@@ -227,8 +227,6 @@ class Widget_New_Audio_Measurement(QWidget):
         pushbutton_start_audio_measurement.clicked.connect(self.button_start_audio_measurement_clicked)
         gridlayout.addWidget(pushbutton_start_audio_measurement, 3, 2, 1, 1)
 
-
-
         groupbox.setLayout(gridlayout)
 
         return groupbox
@@ -273,17 +271,18 @@ class Widget_New_Audio_Measurement(QWidget):
     @pyqtSlot()
     def pushbutton_save_audio_measurement(self):
 
-
         pass
 
     @pyqtSlot()
     def button_start_audio_measurement_clicked(self):
+        dialog = Dialog_Add_Audio_Measurement()
+        dialog.show()
         name_measurement = ''
         filepath_audiofile = 'C:\\Users\\Tobi_SurfacePro\\PycharmProjects\\AudioToolBox\\directory_audio_file\\Jungle Windows Start.wav'
         delay = 0.0
-        id_output_device = ''
+        id_output_device = 3
         id_input_device = ''
-        filepath_recordfile = ''
+        filepath_recordfile = 'C:\\Users\\Tobi_SurfacePro\\Desktop\\test_record_output.wav'
         instance_audio_measurement = AudioMeasurement(name_measurement,
                                                       filepath_audiofile,
                                                       delay,
