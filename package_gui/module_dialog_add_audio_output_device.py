@@ -28,10 +28,10 @@ class Dialog_Add_Audio_Output_Device(QDialog):
         #print(name)
 
         combobox = QComboBox(self)
-        combobox.addItem('Test')
-        combobox.addItem('Test')
-        combobox.addItem('Test')
-        combobox.addItem('Test')
+
+        for item in sd.query_devices():
+            combobox.addItem(item)
+
         #combobox.currentIndexChanged.connect()
 
         gridlayout.addWidget(QLabel("Selected Audio Device:"), 0, 0, 1, 1)
@@ -44,6 +44,8 @@ class Dialog_Add_Audio_Output_Device(QDialog):
         gridlayout.addWidget(QLabel(""), 7, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 8, 1, 1, 1)
         gridlayout.addWidget(QLabel(""), 9, 1, 1, 1)
+
+        self.show()
 
 
 

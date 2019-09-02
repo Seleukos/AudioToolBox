@@ -75,8 +75,8 @@ class Mainwindow(QMainWindow):
         #
         self.create_grid_moduls()
 
-        #self.show()
-        self.showFullScreen()
+        self.show()
+        #self.showFullScreen()
 
     def create_grid_moduls(self):
         self.widget_moduls = QWidget()
@@ -286,7 +286,6 @@ class Mainwindow(QMainWindow):
         dialog_add_audio_measurement = Dialog_Add_Audio_Measurement()
 
         self.tabwidget_mainwindow.addTab(self.widget_new_audio_measurement, "New Measurement")
-
 
     def action_triggered_quit_program(self):
         # This method closes the program

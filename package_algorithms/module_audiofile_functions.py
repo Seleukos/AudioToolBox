@@ -113,7 +113,7 @@ def create_running_output_stream(index):
     return output
 
 
-def playback_audiofile_from_usbdevice(filepath_of_wavfile):
+def playback_audiofile_from_usbdevice(sound_file_paths):
 
     def good_filepath(path):
         """
@@ -137,8 +137,9 @@ def playback_audiofile_from_usbdevice(filepath_of_wavfile):
     '''
 
     # List with all absolute pathes of the found wav.-files:
-    sound_file_paths = ['C:\\Users\\t02meyer\\PycharmProjects\\AUTOBO\\directory_audio_file\\delme_rec_unlimited_903f28uh.wav']
-    sound_file_paths = ['C:\\Users\\t02meyer\\PycharmProjects\\AUTOBO\\directory_audio_file\\1_Ch_wav_Sweep_.5_5_s_48000_novak_log_gen_lin.wav']
+    #sound_file_paths = ['C:\\Users\\t02meyer\\PycharmProjects\\AUTOBO\\directory_audio_file\\delme_rec_unlimited_903f28uh.wav']
+    #sound_file_paths = ['C:\\Users\\t02meyer\\PycharmProjects\\AUTOBO\\directory_audio_file\\1_Ch_wav_Sweep_.5_5_s_48000_novak_log_gen_lin.wav']
+    sound_file_paths= ['C:\\Users\\Tobi_SurfacePro\\PycharmProjects\\AudioToolBox\\directory_audio_file\\Jungle Windows Start.wav']
 
     print("Discovered the following .wav files:", sound_file_paths)
 
@@ -161,7 +162,8 @@ def playback_audiofile_from_usbdevice(filepath_of_wavfile):
     ### There must be a query, which asks for which index should be used for a playback!!!
     ### Afterwards there are created streams for every output
 
-    usb_sound_card_indices = [7]
+    usb_sound_card_indices = [3]
+    #sd.default.device = 3
 
     streams = [create_running_output_stream(index) for index in usb_sound_card_indices]
 

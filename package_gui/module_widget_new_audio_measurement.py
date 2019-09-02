@@ -72,12 +72,6 @@ class Widget_New_Audio_Measurement(QWidget):
 
         return groupbox
 
-    def create_groupbox_measurement_settings(self):
-        groupbox = QGroupBox(self)
-        groupbox.setTitle('Measurement Settings')
-
-        return groupbox
-
     def create_groupbox_dut_settings(self):
         groupbox = QGroupBox(self)
         groupbox.setTitle('DUT Settings')
@@ -229,7 +223,11 @@ class Widget_New_Audio_Measurement(QWidget):
 
         gridlayout.addWidget(QPushButton("Load Audio Measurement"), 0, 2, 1, 1)
         gridlayout.addWidget(QPushButton("Save Audio Measurement"), 1, 2, 1, 1)
-        gridlayout.addWidget(QPushButton("Start Audio Measurement"), 3, 2, 1, 1)
+        pushbutton_start_audio_measurement = QPushButton("Start Audio Measurement")
+        pushbutton_start_audio_measurement.clicked.connect(self.button_start_audio_measurement_clicked)
+        gridlayout.addWidget(pushbutton_start_audio_measurement, 3, 2, 1, 1)
+
+
 
         groupbox.setLayout(gridlayout)
 
@@ -250,11 +248,7 @@ class Widget_New_Audio_Measurement(QWidget):
 
         return 0
 
-    @pyqtSlot()
-    def button_start_audio_measurement_clicked(self):
 
-        start_audio_measurement()
-        return 0
 
     @pyqtSlot()
     def pushbuttons_playback_settings_clicked(self):
@@ -264,10 +258,10 @@ class Widget_New_Audio_Measurement(QWidget):
     @pyqtSlot()
     def pushbutton_add_audio_output_device_clicked(self):
         print("Test...hat funktioniert!")
-        test = sd.query_devices('output')
+        test = sd.query_devices()
         print(test)
         self.dialog = Dialog_Add_Audio_Output_Device(self)
-        self.dialog.show()
+        #self.dialog.show()
         return 0
 
     @pyqtSlot()
@@ -281,6 +275,24 @@ class Widget_New_Audio_Measurement(QWidget):
 
 
         pass
+
+    @pyqtSlot()
+    def button_start_audio_measurement_clicked(self):
+        name_measurement = ''
+        filepath_audiofile = 'C:\\Users\\Tobi_SurfacePro\\PycharmProjects\\AudioToolBox\\directory_audio_file\\Jungle Windows Start.wav'
+        delay = 0.0
+        id_output_device = ''
+        id_input_device = ''
+        filepath_recordfile = ''
+        instance_audio_measurement = AudioMeasurement(name_measurement,
+                                                      filepath_audiofile,
+                                                      delay,
+                                                      id_output_device,
+                                                      id_input_device,
+                                                      filepath_recordfile)
+
+        instance_audio_measurement.start_audio_measurement()
+        return 0
 
 
 
